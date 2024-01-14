@@ -28,7 +28,7 @@ public class WebSecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         System.out.println("WebSecurityConfig.filterChain");
         return http.authorizeHttpRequests()  // 요청에 따라 권한 다르게 설정하는 담당
-                    .requestMatchers("/authenticate").permitAll()
+                    .requestMatchers("/authenticate", "/register").permitAll()
                     .anyRequest().authenticated()
                 .and()
                     .exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint)  // 예외 처리 담당
@@ -61,7 +61,7 @@ public class WebSecurityConfig {
 
     // 패스워드 인코더로 사용할 빈 등록
     @Bean
-    public BCryptPasswordEncoder bCryptPasswordEncoder() {
+    public static BCryptPasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
     }
 }

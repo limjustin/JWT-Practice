@@ -3,6 +3,7 @@ package dev.limjustin.jwtsecuprac.controller;
 import dev.limjustin.jwtsecuprac.config.JwtTokenUtil;
 import dev.limjustin.jwtsecuprac.model.JwtRequest;
 import dev.limjustin.jwtsecuprac.model.JwtResponse;
+import dev.limjustin.jwtsecuprac.model.UserDTO;
 import dev.limjustin.jwtsecuprac.service.JwtUserDetailsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -34,6 +35,11 @@ public class JwtAuthenticationController {
         String token = jwtTokenUtil.generateToken(userDetails);
 
         return ResponseEntity.ok(new JwtResponse(token));
+    }
+
+    @PostMapping("/register")
+    public ResponseEntity<?> saveUser(@RequestBody UserDTO userDTO) throws Exception {
+        return ResponseEntity.ok(userDetailsService.save(userDTO));
     }
 
     private void authenticate(String username, String password) throws Exception {
