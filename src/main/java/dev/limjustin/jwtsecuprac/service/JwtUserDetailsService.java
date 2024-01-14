@@ -5,7 +5,6 @@ import dev.limjustin.jwtsecuprac.dao.UserRepository;
 import dev.limjustin.jwtsecuprac.model.UserDAO;
 import dev.limjustin.jwtsecuprac.model.UserDTO;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
